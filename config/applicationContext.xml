@@ -17,14 +17,14 @@
 	
 	
 	
-	<bean id="autoAlarmCheckPingJob" class="org.sevenzero.springdemo.SimpleTimeTest">
+	<bean id="taskJob" class="org.sevenzero.springdemo.SimpleTimeTest">
 	</bean>
 	
-	<bean id="autoAlarmCheckPingJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="name" value="autoAlarmCheckPingJob" />
+	<bean id="taskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="name" value="taskJob" />
 		<property name="group" value="Invoice_Trigger_Group" />
 		<property name="targetObject">
-			<ref bean="autoAlarmCheckPingJob" />
+			<ref bean="taskJob" />
 		</property>
 		<property name="targetMethod">
 			<value>doStudy</value>
@@ -34,20 +34,20 @@
 		</property>
 	</bean>
 	<!--   每隔五分钟执行一次  -->
-	<bean id="autoAlarmCheckPingJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	<bean id="taskJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="name" value="StartTrigger" />
 		<property name="group" value="Invoice_Trigger_Group" />
-		<property name="jobDetail" ref="autoAlarmCheckPingJobDetail" />
+		<property name="jobDetail" ref="taskJobDetail" />
 		<property name="cronExpression">
  			<value>0/5 * * * * ?</value>
 		</property>
 	</bean>
 	
-	<bean id="autoAlarmCheckPingJobSchedule" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
-		<property name="schedulerName" value="autoAlarmCheckPingJobSchedule" />
+	<bean id="taskJobSchedule" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+		<property name="schedulerName" value="taskJobSchedule" />
 		<property name="triggers">
 			<list>
-				<ref bean="autoAlarmCheckPingJobTrigger" />
+				<ref bean="taskJobTrigger" />
 			</list>
 		</property>	
 	</bean> 
