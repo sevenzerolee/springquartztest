@@ -30,11 +30,18 @@
 			<version>3.0.5.RELEASE</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>1.8.4</version>
-		</dependency>
+		
+
+	<dependency>
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz</artifactId>
+		<version>2.2.3</version>
+	</dependency>
+	<dependency>  
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz-jobs</artifactId>
+		<version>2.2.3</version>
+	</dependency>
 		
 		<dependency>
 		<groupId>log4j</groupId>
@@ -52,5 +59,36 @@
 		
 	</dependencies> 
   
+	<build>
+	    <directory>target</directory>
+	    <finalName>springdemo</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8087/manager/text</url>
+					<path>/springdemo</path>
+					<server>tomcat7</server>
+					<username>admin</username>
+					<password>222222</password>
+					<update>true</update>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<!-- 排除不需要的内容 -->
+				<configuration>
+					<warSourceExcludes>WEB-INF/lib/log4j-${log4j.version}.jar</warSourceExcludes>
+				</configuration>
+			</plugin> 
+		</plugins>
+	</build>  
+	
+	
 	
 </project>

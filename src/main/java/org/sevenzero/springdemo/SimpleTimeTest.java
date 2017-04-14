@@ -16,7 +16,7 @@ public class SimpleTimeTest {
 		System.out.println("It is " + new Date());
 		
 		try {
-			Thread.sleep(8000L);
+			Thread.sleep(2000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
