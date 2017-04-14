@@ -5,6 +5,8 @@
   <groupId>org.sevenzero</groupId>
   <artifactId>springdemo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+	<packaging>war</packaging> 
 
 	<dependencies>
 	    
@@ -35,13 +37,14 @@
 	<dependency>
 		<groupId>org.quartz-scheduler</groupId>
 		<artifactId>quartz</artifactId>
-		<version>2.2.3</version>
+		<version>1.8.4</version>
 	</dependency>
-	<dependency>  
+	<!-- spring 3.0.5 与quartz2.2.3不兼容 -->
+<!-- 	<dependency>  
 		<groupId>org.quartz-scheduler</groupId>
 		<artifactId>quartz-jobs</artifactId>
 		<version>2.2.3</version>
-	</dependency>
+	</dependency> -->
 		
 		<dependency>
 		<groupId>log4j</groupId>
@@ -55,6 +58,8 @@
 	        <artifactId>mysql-connector-java</artifactId>
 	        <version>5.1.40</version>
 	</dependency>
+	
+	
 		
 		
 	</dependencies> 
@@ -62,12 +67,23 @@
 	<build>
 	    <directory>target</directory>
 	    <finalName>springdemo</finalName>
+	    
+	    <resources>
+	        <resource>
+	            <directory>config</directory>
+	            <includes>
+	                <include>*</include>
+	            </includes>
+	        </resource>
+	    </resources>
+	    
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
+				    <ignorePackaging>true</ignorePackaging>
 					<url>http://localhost:8087/manager/text</url>
 					<path>/springdemo</path>
 					<server>tomcat7</server>
@@ -75,6 +91,7 @@
 					<password>222222</password>
 					<update>true</update>
 				</configuration>
+				
 			</plugin>
 			
 			<plugin>
