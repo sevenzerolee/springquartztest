@@ -22,23 +22,14 @@
 
         <!-- 每台集群机器部署应用的时候会更新触发器-->
         <property name="overwriteExistingJobs" value="true"/>
-        
         <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
-        
-        
         <property name="autoStartup" value="true" />
         
         <property name="triggers">
             <list>
-                <ref bean="taskJobTrigger"/>
+                <ref bean="helloJobTrigger"/>
             </list>
         </property>
-        
-        <!-- <property name="jobDetails">
-            <list>
-                <ref bean="taskJobDetail"/>
-            </list>
-        </property> -->
 		
 	</bean>
 	
@@ -59,29 +50,28 @@
 		</property>
 	</bean> -->
 	
-	<bean id="quartzJob" class="org.sevenzero.springdemo.QuartzJob">
+	<bean id="helloJob" class="org.sevenzero.springdemo.HelloJob">
 	</bean>
 	
-	<bean id="taskJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+	<bean id="helloJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
 	    <property name="jobClass">
 	        <value>org.sevenzero.springdemo.MyDetailQuartzJobBean</value>
 	    </property>
 	    
 		<property name="jobDataAsMap">
 		    <map>
-		        <entry key="targetObject" value="quartzJob"></entry>
-		        <entry key="targetMethod" value="execute"></entry>
+		        <entry key="helloJob" value-ref="helloJob"></entry>
 		    </map>
 		</property>
 	</bean>
 	
 	<!--   每隔五秒执行一次  -->
-	<bean id="taskJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-		<property name="name" value="StartTrigger" />
-		<property name="group" value="Invoice_Trigger_Group" />
-		<property name="jobDetail" ref="taskJobDetail" />
+	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="name" value="helloJobTrigger" />
+		<property name="group" value="helloJobTriggerGroup" />
+		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/5 * * * * ?</value>
+ 			<value>0/20 * * * * ?</value>
 		</property>
 	</bean>
 	
@@ -89,7 +79,7 @@
 		<property name="schedulerName" value="taskJobSchedule" />
 		<property name="triggers">
 			<list>
-				<ref bean="taskJobTrigger" />
+				<ref bean="helloJobTrigger" />
 			</list>
 		</property>	
 	</bean>  -->
