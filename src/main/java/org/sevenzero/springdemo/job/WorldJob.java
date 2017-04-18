@@ -1,4 +1,4 @@
-package org.sevenzero.springdemo;
+package org.sevenzero.springdemo.job;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class WorldJob implements Serializable {
 	private static final long serialVersionUID = 4297964891946540442L;
 
 	public void execute() {
-		System.out.println("$$$$$$ " + new Date());
+		System.out.println("$$$$$$$$$$$$$$$$$$$$ " + new Date());
 	}
 
 }

@@ -22,40 +22,49 @@
 
         <!-- 每台集群机器部署应用的时候会更新触发器-->
         <property name="overwriteExistingJobs" value="true"/>
-        <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
-        <property name="autoStartup" value="true" />
         
         <property name="triggers">
             <list>
                 <ref bean="helloJobTrigger"/>
+                <ref bean="worldJobTrigger" />
             </list>
         </property>
 		
 	</bean>
 	
-	<!-- <bean id="taskJob" class="org.sevenzero.springdemo.SimpleTimeTest">
-	</bean> -->
+	<!-- WorldJob -->
+	<bean id="worldJob" class="org.sevenzero.springdemo.job.WorldJob">
+	</bean>
 	
-<!-- 	<bean id="taskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="name" value="taskJob" />
-		<property name="group" value="Invoice_Trigger_Group" />
-		<property name="targetObject">
-			<ref bean="taskJob" />
+	<bean id="worldJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+	    <property name="jobClass">
+	        <value>org.sevenzero.springdemo.quartz.WorldDetailQuartzJobBean</value>
+	    </property>
+	    
+		<property name="jobDataAsMap">
+		    <map>
+		        <entry key="worldJob" value-ref="worldJob"></entry>
+		    </map>
 		</property>
-		<property name="targetMethod">
-			<value>doStudy</value>
-		</property>
-		<property name="concurrent">
-			<value>false</value>
-		</property>
-	</bean> -->
+	</bean>
 	
-	<bean id="helloJob" class="org.sevenzero.springdemo.HelloJob">
+	<!--   每隔五秒执行一次  -->
+	<bean id="worldJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="name" value="worldJobTrigger" />
+		<property name="group" value="worldJobTriggerGroup" />
+		<property name="jobDetail" ref="worldJobDetail" />
+		<property name="cronExpression">
+ 			<value>0/5 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- HelloJob -->
+	<bean id="helloJob" class="org.sevenzero.springdemo.job.HelloJob">
 	</bean>
 	
 	<bean id="helloJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
 	    <property name="jobClass">
-	        <value>org.sevenzero.springdemo.MyDetailQuartzJobBean</value>
+	        <value>org.sevenzero.springdemo.quartz.HelloDetailQuartzJobBean</value>
 	    </property>
 	    
 		<property name="jobDataAsMap">
@@ -71,7 +80,7 @@
 		<property name="group" value="helloJobTriggerGroup" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/20 * * * * ?</value>
+ 			<value>0/10 * * * * ?</value>
 		</property>
 	</bean>
 	

@@ -1,4 +1,4 @@
-package org.sevenzero.springdemo;
+package org.sevenzero.springdemo.job;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class HelloJob implements Serializable {
 	private static final long serialVersionUID = -4558319824928134118L;
 
 	public void doStudy() {
-		System.out.println("### It is hello " + new Date());
+		System.out.println("############## It is hello " + new Date());
 		
 		try {
 			Thread.sleep(2000L);
