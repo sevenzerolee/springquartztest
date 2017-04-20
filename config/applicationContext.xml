@@ -20,13 +20,16 @@
 		<!-- 配置文件 -->
 		<property name="configLocation" value="classpath:quartz.properties"/>
 
+		<!-- QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+		<property name="startupDelay" value="3" />
+		
         <!-- 每台集群机器部署应用的时候会更新触发器-->
         <property name="overwriteExistingJobs" value="true"/>
         
         <property name="triggers">
             <list>
                 <ref bean="helloJobTrigger"/>
-                <ref bean="worldJobTrigger" />
+                <ref bean="worldJobTrigger"/>
             </list>
         </property>
 		
@@ -48,13 +51,13 @@
 		</property>
 	</bean>
 	
-	<!--   每隔五秒执行一次  -->
+	<!--   每隔6秒执行一次  -->
 	<bean id="worldJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="name" value="worldJobTrigger" />
 		<property name="group" value="worldJobTriggerGroup" />
 		<property name="jobDetail" ref="worldJobDetail" />
 		<property name="cronExpression">
- 			<value>0/5 * * * * ?</value>
+ 			<value>0/6 * * * * ?</value>
 		</property>
 	</bean>
 	
@@ -74,13 +77,13 @@
 		</property>
 	</bean>
 	
-	<!--   每隔五秒执行一次  -->
+	<!--   每隔8秒执行一次  -->
 	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="name" value="helloJobTrigger" />
 		<property name="group" value="helloJobTriggerGroup" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/3 * * * * ?</value>
+ 			<value>0/8 * * * * ?</value>
 		</property>
 	</bean>
 	

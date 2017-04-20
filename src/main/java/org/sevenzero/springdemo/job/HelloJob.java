@@ -18,15 +18,19 @@ public class HelloJob implements Serializable {
 	 */
 	private static final long serialVersionUID = -4558319824928134118L;
 
+	/**
+	 * 执行10秒
+	 */
 	public void doStudy() {
-		System.out.println("############## It is hello " + new Date());
+		System.out.println("############## Start It is hello " + new Date());
 		
 		try {
-			Thread.sleep(5000L);
+			Thread.sleep(10 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+//		System.out.println("############## End   It is hello " + new Date());
 	}
 
 }

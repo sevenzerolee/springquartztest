@@ -18,14 +18,18 @@ public class WorldJob implements Serializable {
 	 */
 	private static final long serialVersionUID = 4297964891946540442L;
 
+	/**
+	 * 执行8秒
+	 */
 	public void execute() {
-		System.out.println("$$$$$$$$$$$$$$$$$$$$ " + new Date());
+		System.out.println("$$$$$$$$$$$$$$$$$$$$ start " + new Date());
 		try {
-			Thread.sleep(8000L);
+			Thread.sleep(8 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+//		System.out.println("$$$$$$$$$$$$$$$$$$$$ end   " + new Date());
 	}
 
 }
