@@ -13,6 +13,7 @@
       <!-- 3.0.5.RELEASE -->
       <spring.version>3.0.5.RELEASE</spring.version>
       <!-- 1.8.5 --> 
+      <!-- 1.6.2 -->
       <quartz.version>1.8.5</quartz.version>
   </properties>
 
@@ -41,12 +42,20 @@
 		</dependency>
 		
 		
-
 	<dependency>
 		<groupId>org.quartz-scheduler</groupId>
 		<artifactId>quartz</artifactId>
 		<version>${quartz.version}</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz-oracle -->
+	  
+	<dependency>
+	    <groupId>org.quartz-scheduler</groupId>
+	    <artifactId>quartz-oracle</artifactId>
+	    <version>${quartz.version}</version>
+	</dependency>
+	
 	<!-- spring 3.0.5 与quartz2.2.3不兼容 -->
 <!-- 	<dependency>  
 		<groupId>org.quartz-scheduler</groupId>
