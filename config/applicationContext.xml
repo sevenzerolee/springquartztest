@@ -80,7 +80,7 @@
 		<property name="group" value="helloJobTriggerGroup" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/10 * * * * ?</value>
+ 			<value>0/3 * * * * ?</value>
 		</property>
 	</bean>
 	

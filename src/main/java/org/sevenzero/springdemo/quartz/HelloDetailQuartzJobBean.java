@@ -3,6 +3,7 @@ package org.sevenzero.springdemo.quartz;
 import org.apache.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.quartz.StatefulJob;
 import org.sevenzero.springdemo.job.HelloJob;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
@@ -14,7 +15,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
  * @date 2017年4月17日
  *
  */
-public class HelloDetailQuartzJobBean extends QuartzJobBean {
+public class HelloDetailQuartzJobBean extends QuartzJobBean implements StatefulJob {
 	
 	static final Logger logger = Logger.getLogger(HelloDetailQuartzJobBean.class.getSimpleName());
 
