@@ -25,7 +25,7 @@ public class HelloJob implements Serializable {
 		System.out.println("############## Start It is hello " + new Date());
 		
 		try {
-			Thread.sleep(10 * 1000L);
+			Thread.sleep(60 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();

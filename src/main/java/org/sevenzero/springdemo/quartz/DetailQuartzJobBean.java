@@ -29,10 +29,10 @@ public class DetailQuartzJobBean extends QuartzJobBean implements StatefulJob {
 
 	protected void executeInternal(JobExecutionContext context)
 			throws JobExecutionException {
-
+		
 		try {
 			ctx = this.getApplicationContext(context);
-			logger.info("############# execute [ " + ctx + "-" + targetObject + "-" + targetMethod + " ] at once>>>>>>");
+//			logger.info("############# execute [ " + ctx + "-" + targetObject + "-" + targetMethod + " ] at once>>>>>>");
 			
 			if (null != ctx) {
 				Object obj = ctx.getBean(targetObject);

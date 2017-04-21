@@ -24,7 +24,7 @@ public class WorldJob implements Serializable {
 	public void execute() {
 		System.out.println("$$$$$$$$$$$$$$$$$$$$ start " + new Date());
 		try {
-			Thread.sleep(8 * 1000L);
+			Thread.sleep(90 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
