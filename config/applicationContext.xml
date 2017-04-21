@@ -17,6 +17,9 @@
     
 	<!-- 配置调度任务 -->
 	<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	    
+	    <property name="applicationContextSchedulerContextKey" value="applicationContext" />
+	    
 		<!-- 配置文件 -->
 		<property name="configLocation" value="classpath:quartz.properties"/>
 
@@ -25,6 +28,8 @@
 		
         <!-- 每台集群机器部署应用的时候会更新触发器-->
         <property name="overwriteExistingJobs" value="true"/>
+        
+        <property name="autoStartup" value="true" />
         
         <property name="triggers">
             <list>
@@ -41,12 +46,13 @@
 	
 	<bean id="worldJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
 	    <property name="jobClass">
-	        <value>org.sevenzero.springdemo.quartz.WorldDetailQuartzJobBean</value>
+	        <value>org.sevenzero.springdemo.quartz.DetailQuartzJobBean</value>
 	    </property>
 	    
 		<property name="jobDataAsMap">
 		    <map>
-		        <entry key="worldJob" value-ref="worldJob"></entry>
+		        <entry key="targetObject" value="worldJob" />
+		        <entry key="targetMethod" value="execute" />
 		    </map>
 		</property>
 	</bean>
@@ -67,12 +73,13 @@
 	
 	<bean id="helloJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
 	    <property name="jobClass">
-	        <value>org.sevenzero.springdemo.quartz.HelloDetailQuartzJobBean</value>
+	        <value>org.sevenzero.springdemo.quartz.DetailQuartzJobBean</value>
 	    </property>
 	    
 		<property name="jobDataAsMap">
 		    <map>
-		        <entry key="helloJob" value-ref="helloJob"></entry>
+		        <entry key="targetObject" value="helloJob" />
+		        <entry key="targetMethod" value="doStudy" />
 		    </map>
 		</property>
 	</bean>
