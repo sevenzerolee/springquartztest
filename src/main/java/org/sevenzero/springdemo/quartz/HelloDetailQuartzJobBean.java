@@ -23,10 +23,10 @@ public class HelloDetailQuartzJobBean extends QuartzJobBean {
 	protected void executeInternal(JobExecutionContext context)
 			throws JobExecutionException {
 		
-		log.info("############## 耗时10秒 Start It is hello " + new Date());
+		log.info("############## 耗时35秒 Start It is hello " + new Date());
 		
 		try {
-			Thread.sleep(10 * 1000L);
+			Thread.sleep(35 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();

@@ -22,9 +22,9 @@ public class WorldDetailQuartzJobBean extends QuartzJobBean {
 	protected void executeInternal(JobExecutionContext context)
 			throws JobExecutionException {
 		
-		log.info("$$$$$$$$$$$$$$$$$$$$ 耗时8秒 start" + new Date());
+		log.info("$$$$$$$$$$$$$$$$$$$$ 耗时25秒 start" + new Date());
 		try {
-			Thread.sleep(8 * 1000L);
+			Thread.sleep(25 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();

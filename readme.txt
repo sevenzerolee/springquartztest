@@ -5,3 +5,5 @@ mysql database jobtest_1_8 配套 quartz2.0 一下版本
 
 dev-job branch for 3.0.5.RELEASE + quartz1.8.4 分布式定时任务跑通 for mysql 
 
+dev-job-spring4.2 for 4.2.2 + quartz2.3 分布式定时任务 for mysql
+

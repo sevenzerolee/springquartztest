@@ -45,12 +45,12 @@
 	    <property name="durability" value="true"></property> 
 	</bean>
 	
-	<!--   每隔6秒执行一次  -->
+	<!--   每隔20秒执行一次  -->
 	<bean id="worldJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="name" value="worldJobTrigger" />
 		<property name="jobDetail" ref="worldJobDetail" />
 		<property name="cronExpression">
- 			<value>0/6 * * * * ?</value>
+ 			<value>0/20 * * * * ?</value>
 		</property>
 	</bean>
 	
@@ -65,12 +65,12 @@
 	    <property name="durability" value="true"></property> 
 	</bean>
 	
-	<!--   每隔8秒执行一次  -->
+	<!--   每隔30秒执行一次  -->
 	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="name" value="helloJobTrigger" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/8 * * * * ?</value>
+ 			<value>0/30 * * * * ?</value>
 		</property>
 	</bean>
 	
