@@ -1,7 +1,9 @@
 package org.sevenzero.springdemo.job;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -11,18 +13,16 @@ import java.util.Date;
  * @date 2017年3月30日
  * 
  */
-public class HelloJob implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4558319824928134118L;
+@Component("helloJob")
+public class HelloJob {
+	
+	static final Logger log = Logger.getLogger(HelloJob.class);
 
 	/**
 	 * 执行10秒
 	 */
-	public void doStudy() {
-		System.out.println("############## Start It is hello " + new Date());
+	public void execute() {
+		log.info("############## 耗时10秒 Start It is hello " + new Date());
 		
 		try {
 			Thread.sleep(10 * 1000L);
@@ -30,7 +30,6 @@ public class HelloJob implements Serializable {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-//		System.out.println("############## End   It is hello " + new Date());
 	}
 
 }

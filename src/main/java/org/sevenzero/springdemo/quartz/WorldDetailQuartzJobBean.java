@@ -1,10 +1,10 @@
 package org.sevenzero.springdemo.quartz;
 
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.StatefulJob;
-import org.sevenzero.springdemo.job.WorldJob;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
@@ -15,25 +15,21 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
  * @date 2017年4月17日
  *
  */
-public class WorldDetailQuartzJobBean extends QuartzJobBean implements StatefulJob {
+public class WorldDetailQuartzJobBean extends QuartzJobBean {
 	
-	static final Logger logger = Logger.getLogger(WorldDetailQuartzJobBean.class.getSimpleName());
-
-	private WorldJob worldJob;
+	static final Logger log = Logger.getLogger(WorldDetailQuartzJobBean.class.getSimpleName());
 
 	protected void executeInternal(JobExecutionContext context)
 			throws JobExecutionException {
-
-//		logger.info("******* Bean ****** " + worldJob);
 		
-		if (null != worldJob) {
-			worldJob.execute();
+		log.info("$$$$$$$$$$$$$$$$$$$$ 耗时8秒 start" + new Date());
+		try {
+			Thread.sleep(8 * 1000L);
+		} 
+		catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
-	}
-
-	public void setWorldJob(WorldJob worldJob) {
-		this.worldJob = worldJob;
 	}
 
 }

@@ -1,7 +1,9 @@
 package org.sevenzero.springdemo.job;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -11,25 +13,22 @@ import java.util.Date;
  * @date 2017年4月17日
  *
  */
-public class WorldJob implements Serializable {
+@Component
+public class WorldJob{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4297964891946540442L;
-
+	static final Logger log = Logger.getLogger(WorldJob.class);
+	
 	/**
 	 * 执行8秒
 	 */
 	public void execute() {
-		System.out.println("$$$$$$$$$$$$$$$$$$$$ start " + new Date());
+		log.info("$$$$$$$$$$$$$$$$$$$$ 耗时8秒 start" + new Date());
 		try {
 			Thread.sleep(8 * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-//		System.out.println("$$$$$$$$$$$$$$$$$$$$ end   " + new Date());
 	}
 
 }

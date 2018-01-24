@@ -14,7 +14,6 @@
     http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    
 	<!-- 配置调度任务 -->
 	<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<!-- 配置文件 -->
@@ -36,25 +35,19 @@
 	</bean>
 	
 	<!-- WorldJob -->
-	<bean id="worldJob" class="org.sevenzero.springdemo.job.WorldJob">
-	</bean>
+	<!-- <bean id="worldJob" class="org.sevenzero.springdemo.job.WorldJob">
+	</bean> -->
 	
-	<bean id="worldJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+	<bean id="worldJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 	    <property name="jobClass">
 	        <value>org.sevenzero.springdemo.quartz.WorldDetailQuartzJobBean</value>
 	    </property>
-	    
-		<property name="jobDataAsMap">
-		    <map>
-		        <entry key="worldJob" value-ref="worldJob"></entry>
-		    </map>
-		</property>
+	    <property name="durability" value="true"></property> 
 	</bean>
 	
 	<!--   每隔6秒执行一次  -->
-	<bean id="worldJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	<bean id="worldJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="name" value="worldJobTrigger" />
-		<property name="group" value="worldJobTriggerGroup" />
 		<property name="jobDetail" ref="worldJobDetail" />
 		<property name="cronExpression">
  			<value>0/6 * * * * ?</value>
@@ -62,38 +55,24 @@
 	</bean>
 	
 	<!-- HelloJob -->
-	<bean id="helloJob" class="org.sevenzero.springdemo.job.HelloJob">
-	</bean>
+	<!-- <bean id="helloJob" class="org.sevenzero.springdemo.job.HelloJob">
+	</bean> -->
 	
-	<bean id="helloJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+	<bean id="helloJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 	    <property name="jobClass">
 	        <value>org.sevenzero.springdemo.quartz.HelloDetailQuartzJobBean</value>
 	    </property>
-	    
-		<property name="jobDataAsMap">
-		    <map>
-		        <entry key="helloJob" value-ref="helloJob"></entry>
-		    </map>
-		</property>
+	    <property name="durability" value="true"></property> 
 	</bean>
 	
 	<!--   每隔8秒执行一次  -->
-	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="name" value="helloJobTrigger" />
-		<property name="group" value="helloJobTriggerGroup" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
  			<value>0/8 * * * * ?</value>
 		</property>
 	</bean>
 	
-	<!-- <bean id="taskJobSchedule" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
-		<property name="schedulerName" value="taskJobSchedule" />
-		<property name="triggers">
-			<list>
-				<ref bean="helloJobTrigger" />
-			</list>
-		</property>	
-	</bean>  -->
 	 
 </beans>

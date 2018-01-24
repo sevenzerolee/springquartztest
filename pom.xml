@@ -56,14 +56,22 @@
 		<version>${quartz.version}</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz-jobs</artifactId>
+		<version>${quartz.version}</version>
+	</dependency>
+	
 	<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz-oracle -->
-	  
+	
+	<!-- 
 	<dependency>
 	    <groupId>org.quartz-scheduler</groupId>
 	    <artifactId>quartz-oracle</artifactId>
 	    <version>${quartz.oracle.version_2.1.7}</version>
 	</dependency>
-
+	 -->
+	 
 	<!-- spring 3.0.5 与quartz2.2.3不兼容 -->
 	<!-- <dependency> <groupId>org.quartz-scheduler</groupId> <artifactId>quartz-jobs</artifactId> 
 		<version>2.2.3</version> </dependency> -->
