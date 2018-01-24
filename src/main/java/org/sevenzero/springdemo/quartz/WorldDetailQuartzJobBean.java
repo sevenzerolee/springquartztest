@@ -3,6 +3,7 @@ package org.sevenzero.springdemo.quartz;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
+import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -15,6 +16,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
  * @date 2017年4月17日
  *
  */
+@DisallowConcurrentExecution
 public class WorldDetailQuartzJobBean extends QuartzJobBean {
 	
 	static final Logger log = Logger.getLogger(WorldDetailQuartzJobBean.class.getSimpleName());
