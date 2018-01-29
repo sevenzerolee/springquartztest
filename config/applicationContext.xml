@@ -28,7 +28,7 @@
         <property name="triggers">
             <list>
                 <ref bean="helloJobTrigger"/>
-                <ref bean="worldJobTrigger"/>
+                <!-- <ref bean="worldJobTrigger"/> -->
             </list>
         </property>
 		

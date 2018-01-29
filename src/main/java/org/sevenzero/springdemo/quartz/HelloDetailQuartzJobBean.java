@@ -33,6 +33,8 @@ public class HelloDetailQuartzJobBean extends QuartzJobBean {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		log.info("############## 耗时35秒 End   It is hello " + new Date());
 
 	}
 
