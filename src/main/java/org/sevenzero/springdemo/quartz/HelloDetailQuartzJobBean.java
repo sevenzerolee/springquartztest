@@ -21,20 +21,21 @@ public class HelloDetailQuartzJobBean extends QuartzJobBean {
 	
 	static final Logger log = Logger.getLogger(HelloDetailQuartzJobBean.class.getSimpleName());
 
+	private int sleep = 10;
 
 	protected void executeInternal(JobExecutionContext context)
 			throws JobExecutionException {
 		
-		log.info("############## 耗时35秒 Start It is hello " + new Date());
+		log.info("############## 耗时" + sleep + "秒 Start It is hello " + new Date());
 		
 		try {
-			Thread.sleep(35 * 1000L);
+			Thread.sleep(sleep * 1000L);
 		} 
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
-		log.info("############## 耗时35秒 End   It is hello " + new Date());
+		log.info("############## 耗时" + sleep + "秒 End   It is hello " + new Date());
 
 	}
 

@@ -27,7 +27,7 @@
         
         <property name="triggers">
             <list>
-                <ref bean="helloJobTrigger"/>
+                <!-- <ref bean="helloJobTrigger"/> -->
                 <!-- <ref bean="worldJobTrigger"/> -->
             </list>
         </property>
@@ -65,12 +65,12 @@
 	    <property name="durability" value="true"></property> 
 	</bean>
 	
-	<!--   每隔30秒执行一次  -->
+	<!--   每隔3秒执行一次  -->
 	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="name" value="helloJobTrigger" />
 		<property name="jobDetail" ref="helloJobDetail" />
 		<property name="cronExpression">
- 			<value>0/30 * * * * ?</value>
+ 			<value>0/3 * * * * ?</value>
 		</property>
 	</bean>
 	
