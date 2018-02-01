@@ -72,7 +72,7 @@ public class JobController {
 			e.printStackTrace();
 		}
 		
-		return "pause";
+		return "delete";
 	}
 
 }
